@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vintage Envelope Letter</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+body {
+    background-color: #1c1c1c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Great Vibes', cursive;
+}
+
+.envelope-container {
+    width: 320px;
+    perspective: 1000px;
+    cursor: pointer;
+    position: relative;
+}
+
+.envelope {
+    width: 100%;
+    background-color: #000;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.7);
+    overflow: hidden;
+    transition: all 0.8s ease;
+}
+
+.flap {
+    width: 100%;
+    height: 70px;
+    background-color: #000;
+    transform-origin: top;
+    transition: transform 1s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    z-index: 2;
+    text-align: center;
+}
+
+.letter {
+    background-color: #f4ecd8;
+    margin-top: 70px;
+    padding: 35px;
+    border-radius: 10px;
+    color: #2c1608;
+    line-height: 1.7;
+    font-size: 1rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1s ease, opacity 1s ease, transform 1s ease;
+    opacity: 0;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.1);
+    border: 2px solid #d4c1a3;
+    background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 5px,
+        rgba(0,0,0,0.01) 5px,
+        rgba(0,0,0,0.01) 10px
+    ); /* subtle paper texture */
+    clip-path: polygon(
+        5% 0%, 95% 0%, 100% 5%, 100% 95%, 95% 100%, 5% 100%, 0% 95%, 0% 5%
+    );
+    transform: scaleY(0.5); /* folded effect */
+}
+
+.envelope.open .flap {
+    transform: rotateX(-180deg);
+    color: transparent;
+}
+
+.envelope.open .letter {
+    max-height: 1500px;
+    opacity: 1;
+    transform: scaleY(1); /* unfold */
+}
+
+.letter p {
+    margin-bottom: 18px;
+}
+
+.signature {
+    text-align: right;
+    font-style: italic;
+    margin-top: 25px;
+    font-size: 1.2rem;
+}
+
+/* Flower animation */
+.flower {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    transition: transform 1s ease;
+    z-index: 1;
+}
+
+.envelope.open .flower {
+    transform: translateX(-50%) scale(1);
+}
+</style>
+</head>
+<body>
+
+<div class="envelope-container" onclick="openEnvelope()">
+    <div class="envelope" id="envelope">
+        <div class="flap">Open, but smile first 😊</div>
+        <div class="letter" id="letter">
+            <!-- Shortened 9-paragraph letter -->
+            <p>Hi… I just wanted to say this because I saw your repost. I care about you — I really do, and I’m proud of you. Even if things feel heavy, you keep going, and that shows incredible strength.</p>
+
+            <p>Sometimes life feels unfair, and it’s okay to feel overwhelmed. But remember, you’re stronger than you think, and each day you keep moving forward, even when it’s hard, is a victory.</p>
+
+            <p>I hope God brings you peace and clarity soon. You deserve happiness that lasts, even through the challenges. Healing may take time, but you are not alone.</p>
+
+            <p>You’re amazing, smart, capable, and beautiful inside and out. Your kindness and warmth touch others, even when you don’t realize it. That alone is something so special.</p>
+
+            <p>Don’t let struggles make you feel less. Being human means facing hardships. What matters is that you keep trying, keep fighting — that’s real strength.</p>
+
+            <p>Remember to breathe, rest, and take care of yourself. You don’t need to carry everything alone. You’re doing your best, and that is already enough.</p>
+
+            <p>No matter what you face, never give up on yourself. You are meant for so much more than the pain you feel now. Keep believing in your light and your potential.</p>
+
+            <p>You are loved, capable, and strong. Even when the world feels heavy, never forget how beautiful your heart is and how much you still deserve happiness.</p>
+
+            <p>Always remember — I believe in you. Keep going. You’ve got this.
+                                                             —Ako to si Natoy, mahal na mahal ka</p>
+        </div>
+        <!-- Flower image -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Red_Rose.jpg" alt="Flower" class="flower" width="50">
+    </div>
+</div>
+
+<script>
+function openEnvelope() {
+    document.getElementById('envelope').classList.toggle('open');
+}
+</script>
+
+</body>
+</html>
